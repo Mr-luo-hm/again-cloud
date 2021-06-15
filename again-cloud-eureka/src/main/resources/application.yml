@@ -1,0 +1,13 @@
+server:
+  port: 20000
+Spring:
+  application:
+    name: again-eureka
+eureka:
+  instance:
+    prefer-ip-address: true #当我们在eureka中点击服务的地址的时候打开的是以ip开头的
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:20000/eureka

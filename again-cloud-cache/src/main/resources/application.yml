@@ -1,0 +1,16 @@
+server:
+  port: 20002
+Spring:
+  application:
+    name: again-cache
+  redis:
+    host: scrm-bus-redis
+    password: ''
+    port: 6369
+eureka:
+  instance:
+    prefer-ip-address: true #当我们在eureka中点击服务的地址的时候打开的是以ip开头的
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+
