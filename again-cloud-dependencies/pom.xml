@@ -23,6 +23,7 @@
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <dynamic-datasource.version>3.2.0</dynamic-datasource.version>
         <hutool.version>5.4.1</hutool.version>
+        <oss.aliyun.version>3.8.0</oss.aliyun.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -46,6 +47,11 @@
             <dependency>
                 <groupId>com.again</groupId>
                 <artifactId>again-spring-boot-starter-elasticsearch</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-spring-boot-starter-storage</artifactId>
                 <version>${revision}</version>
             </dependency>
             <!--mybatis plus extension,包含了mybatis plus core-->
@@ -110,7 +116,12 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-
+            <!--阿里云sdk-->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${oss.aliyun.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -14,6 +14,7 @@
     <modules>
         <module>again-spring-boot-start-datasource</module>
         <module>again-spring-boot-starter-elasticsearch</module>
+        <module>again-spring-boot-starter-storage</module>
     </modules>
 
 

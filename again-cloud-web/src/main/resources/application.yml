@@ -21,3 +21,10 @@ eureka:
       defaultZone: http://localhost:20000/eureka
   instance:
     prefer-ip-address: true #显示 ip
+file:
+  storage:
+    type: aliyun
+    endpoint: oss-cn-shanghai.aliyuncs.com
+    access-key: LTAI5tCuKebbjgCx1BpSgdCS
+    access-secret: oYNiY7bmuIoemnTSQ7kyPWktw94oOG
+    bucket-name: again-cloud-alibaba
