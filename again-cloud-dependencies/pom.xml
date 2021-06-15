@@ -32,7 +32,24 @@
                 <artifactId>again-extends-mybatis-plus</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-extends-mybatis-plus-mysql</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--starters-->
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-spring-boot-start-datasource</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <!--mybatis plus extension,包含了mybatis plus core-->
+            <!--biz-->
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-cloud-embed</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-extension</artifactId>
@@ -69,6 +86,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
                 <version>2.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.5</version>
+                <scope>compile</scope>
             </dependency>
 
             <!--hutool工具类-->

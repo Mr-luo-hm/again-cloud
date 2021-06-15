@@ -13,6 +13,9 @@
         <module>again-cloud-config</module>
         <module>again-cloud-cache</module>
         <module>again-extends</module>
+        <module>again-starter</module>
+        <module>again-cloud-web</module>
+        <module>again-biz-modules</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -29,6 +32,7 @@
 
         <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
         <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
 
 
