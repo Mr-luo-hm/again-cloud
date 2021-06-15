@@ -16,6 +16,7 @@
         <module>again-starter</module>
         <module>again-cloud-web</module>
         <module>again-biz-modules</module>
+        <module>again-cloud-search</module>
     </modules>
 
     <packaging>pom</packaging>

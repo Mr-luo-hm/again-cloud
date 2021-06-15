@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>again-spring-boot-start-datasource</module>
+        <module>again-spring-boot-starter-elasticsearch</module>
     </modules>
 
 

@@ -43,6 +43,11 @@
                 <artifactId>again-spring-boot-start-datasource</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-spring-boot-starter-elasticsearch</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <!--mybatis plus extension,包含了mybatis plus core-->
             <!--biz-->
             <dependency>
