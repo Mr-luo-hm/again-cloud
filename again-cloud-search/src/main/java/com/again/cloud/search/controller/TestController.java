@@ -20,7 +20,7 @@ public class TestController {
 
 	/**
 	 * 7.9 版本 删除了字段mapping source must be pairs of fieldnames and properties definition 校验
-	 * @param index
+	 * @param index 这里使用的是6.版本 此方法暂不可用
 	 * @return
 	 * @throws IOException
 	 */
