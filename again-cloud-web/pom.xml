@@ -47,6 +47,14 @@
             <groupId>com.again</groupId>
             <artifactId>again-spring-boot-starter-storage</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.majusko</groupId>
+            <artifactId>pulsar-java-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.again</groupId>
+            <artifactId>again-common-modules</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

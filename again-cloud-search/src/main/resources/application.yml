@@ -24,3 +24,5 @@ again:
       cluster_name: scrm-es
       user_name:
       password:
+pulsar:
+  service-url: pulsar://192.168.1.228:6650

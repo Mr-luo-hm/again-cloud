@@ -28,3 +28,5 @@ file:
     access-key: access-key
     access-secret: access-secret
     bucket-name: bucket-name
+pulsar:
+  service-url: pulsar://192.168.1.228:6650

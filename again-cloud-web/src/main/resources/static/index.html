@@ -12,7 +12,7 @@
             var username=document.getElementById("me").value;
             //判断当前浏览器是否支持WebSocket
             if ('WebSocket' in window) {
-                websocket = new WebSocket("ws://" +"192.168.1.99:20004" + "/websocket/"+username);
+                websocket = new WebSocket("ws://" +"192.168.1.99:10011" + "/websocket/"+username);
             } else {
                 alert('当前浏览器 Not support websocket')
             }
@@ -30,6 +30,8 @@
             }
             //接收到消息的回调方法
             websocket.onmessage = function(event) {
+                console.log("sssssssssssssssssssss")
+                console.log(event)
                 setMessageInnerHTML(event.data);
             }
 
@@ -52,7 +54,7 @@
             if (websocket!=null) {
                 const content = document.getElementById("content").value;
                 window.setInterval(function(){ //每隔5秒钟发送一次心跳，避免websocket连接因超时而自动断开
-                    const ping = {"type": "ping"};
+                    const ping = {"type":2,"message":"pong"};
                     websocket.send(JSON.stringify(ping));
                 },5000);
                 const message = '{"to":"' + toName + '","message":"' + content + '"}';//将发送的内容拼接为 json 字符串,服务端用于解析好处理
