@@ -8,6 +8,12 @@ again:
       worker_group_thread_count: 12
       max_payload_size: 65536
       bind_port: 20004
+  starter:
+    kafka:
+      bootstrapServers: scrm-bus-kafka:9092,scrm-bus-kafka:9093,scrm-bus-kafka:9094
+      groupId: default_consumer_group
+      keyDeserializerClassName: org.apache.kafka.common.serialization.StringDeserializer
+      valueSerializerClassName: org.apache.kafka.common.serialization.StringSerializer
 spring:
   datasource:
     password: root

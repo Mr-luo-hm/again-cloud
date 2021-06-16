@@ -24,5 +24,10 @@ again:
       cluster_name: scrm-es
       user_name:
       password:
+    kafka:
+      bootstrapServers: scrm-bus-kafka:9092,scrm-bus-kafka:9093,scrm-bus-kafka:9094
+      groupId: default_consumer_group
+      keyDeserializerClassName: org.apache.kafka.common.serialization.StringDeserializer
+      valueSerializerClassName: org.apache.kafka.common.serialization.StringSerializer
 pulsar:
   service-url: pulsar://192.168.1.228:6650

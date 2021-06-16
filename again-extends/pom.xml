@@ -12,6 +12,8 @@
     <modules>
         <module>again-extends-mybatis-plus</module>
         <module>again-extends-mybatis-plus-mysql</module>
+        <module>again-extends-kafka</module>
+        <module>again-extends-kafka-stream</module>
     </modules>
 
     <artifactId>again-extends</artifactId>

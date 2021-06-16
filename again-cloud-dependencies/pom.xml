@@ -24,6 +24,7 @@
         <dynamic-datasource.version>3.2.0</dynamic-datasource.version>
         <hutool.version>5.4.1</hutool.version>
         <oss.aliyun.version>3.8.0</oss.aliyun.version>
+        <kafka.version>2.5.0</kafka.version>
         <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
     </properties>
     <dependencyManagement>
@@ -45,6 +46,16 @@
                 <artifactId>again-extends-mybatis-plus-mysql</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-extends-kafka</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-extends-kafka-stream</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <!--starters-->
             <dependency>
                 <groupId>com.again</groupId>
@@ -59,6 +70,11 @@
             <dependency>
                 <groupId>com.again</groupId>
                 <artifactId>again-spring-boot-starter-storage</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.again</groupId>
+                <artifactId>again-spring-boot-starter-kafka</artifactId>
                 <version>${revision}</version>
             </dependency>
             <!--mybatis plus extension,包含了mybatis plus core-->

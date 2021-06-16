@@ -40,6 +40,10 @@
     </dependency>
     <dependency>
         <groupId>com.again</groupId>
+        <artifactId>again-spring-boot-starter-kafka</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.again</groupId>
         <artifactId>again-common-modules</artifactId>
     </dependency>
 </dependencies>
