@@ -4,4 +4,6 @@ public class Producer {
 
 	public static final String PULSAR_TOPIC = "bootTopic";
 
+	public static final String STRING_TOPIC = "stringTopic";
+
 }
