@@ -25,6 +25,6 @@ file:
   storage:
     type: aliyun
     endpoint: oss-cn-shanghai.aliyuncs.com
-    access-key: LTAI5tCuKebbjgCx1BpSgdCS
-    access-secret: oYNiY7bmuIoemnTSQ7kyPWktw94oOG
-    bucket-name: again-cloud-alibaba
+    access-key: access-key
+    access-secret: access-secret
+    bucket-name: bucket-name
