@@ -1,5 +1,6 @@
 package com.again.cloud.web.socket.netty;
 
+import com.again.cloud.web.socket.SocketService;
 import com.again.cloud.web.socket.lserver.ChannelSupervise;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -12,21 +13,32 @@ import io.netty.handler.codec.http.websocketx.*;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.CharsetUtil;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static io.netty.handler.codec.http.HttpUtil.isKeepAlive;
 
 @Slf4j
-@RequiredArgsConstructor
 @Component
 public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
 
 	private WebSocketServerHandshaker socketServerHandshaker;
+
+	private static NioWebSocketHandler nioWebSocketHandler;
+
+	@Autowired
+	private SocketService socketService;
+
+	@PostConstruct
+	public void init() {
+		nioWebSocketHandler = this;
+	}
 
 	/**
 	 * 空闲次数
@@ -83,6 +95,7 @@ public class NioWebSocketHandler extends SimpleChannelInboundHandler<Object> {
 		}
 		// 返回应答消息
 		String request = ((TextWebSocketFrame) frame).text();
+		nioWebSocketHandler.socketService.addChannel(ctx, new HashMap());
 		log.info("服务端收到：" + request);
 		TextWebSocketFrame tws = new TextWebSocketFrame(new Date().toString() + ctx.channel().id() + "：" + request);
 		// 群发
