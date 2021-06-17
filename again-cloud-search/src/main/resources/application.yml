@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: again-search
+  rabbitmq:
+    host: 192.168.1.144
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   instance:
     prefer-ip-address: true #当我们在eureka中点击服务的地址的时候打开的是以ip开头的

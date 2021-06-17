@@ -21,6 +21,11 @@ spring:
     url: jdbc:mysql://192.168.1.242:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
   application:
     name: again-web
+  rabbitmq:
+    host: 192.168.1.144
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
