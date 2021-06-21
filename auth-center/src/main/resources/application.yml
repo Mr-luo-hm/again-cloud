@@ -1,0 +1,17 @@
+server:
+  port: 20005
+spring:
+  datasource:
+    password: root
+    username: root
+    url: jdbc:mysql://192.168.1.242:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+  application:
+    name: again-auth
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+  instance:
+    prefer-ip-address: true #显示 ip
+security:
+  secret-key: suibianxiede

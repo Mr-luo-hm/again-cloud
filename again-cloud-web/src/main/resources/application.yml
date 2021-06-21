@@ -14,18 +14,40 @@ again:
       groupId: default_consumer_group
       keyDeserializerClassName: org.apache.kafka.common.serialization.StringDeserializer
       valueSerializerClassName: org.apache.kafka.common.serialization.StringSerializer
+    # IP限流
+  iplimit:
+    # 开启
+    enable: true
+    # 每1秒内（单位毫秒）
+    timeout: 1000
+    # 每个ip限制20个请求（单位个）
+    limit: 20
+  # 全局限流
+  ratelimit:
+    # 开启
+    enable: true
+    # 每1秒内（单位毫秒）
+    timeout: 1000
+    # 总限制200个请求（单位个）
+    limit: 200
+  # IP限流
 spring:
   datasource:
     password: root
     username: root
-    url: jdbc:mysql://192.168.1.242:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://192.168.1.123:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
   application:
     name: again-web
   rabbitmq:
-    host: 192.168.1.144
+    host: 192.168.1.123
     port: 5672
     username: guest
     password: guest
+  redis:
+    host: 192.168.1.4
+    # 数据库索引 默认0
+    database: 5
+    port: 6369
 eureka:
   client:
     service-url:

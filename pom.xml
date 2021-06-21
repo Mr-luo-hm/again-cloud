@@ -18,6 +18,7 @@
         <module>again-biz-modules</module>
         <module>again-cloud-search</module>
         <module>again-common-modules</module>
+        <module>auth-center</module>
     </modules>
 
     <packaging>pom</packaging>
