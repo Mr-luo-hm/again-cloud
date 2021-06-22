@@ -39,6 +39,7 @@ public class LimitRaterInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		/* ip限流 */
 		String ip = ipInfoUtil.getIpAddr(request);
 		if (ipLimitProperties.getEnable()) {
 			Boolean token = redisRaterLimiter.acquireByRedis(ip, ipLimitProperties.getLimit(),
@@ -47,6 +48,7 @@ public class LimitRaterInterceptor extends HandlerInterceptorAdapter {
 				throw new LimitException("你手速怎么这么快，请点慢一点");
 			}
 		}
+		// 全局限流
 		if (limitProperties.getEnable()) {
 			Boolean allLimit = redisRaterLimiter.acquireByRedis(Limit.LIMIT_ALL, limitProperties.getLimit(),
 					limitProperties.getTimeout());
