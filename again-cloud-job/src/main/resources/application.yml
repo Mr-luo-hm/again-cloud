@@ -5,11 +5,12 @@ spring:
     name: again-job
 job:
   zookeeper:
-    serverList: 192.168.1.123:2181
+    serverList: 192.168.1.4:2181
     namespace: again-job
     cron: 0 */1 * * * ?
     sharedCount: 1
     sharedItem: 0=a,1=b,2=c,3=d,4=e
+    connection-timeout-milliseconds: 15000
 eureka:
   instance:
     prefer-ip-address: true #当我们在eureka中点击服务的地址的时候打开的是以ip开头的
@@ -23,18 +24,3 @@ feign:
     config:
       default:
         retryer: feign.Retryer.Default #设置超时重试策略,防止首次启动超时
-##### Ribbon 配置
-ribbon:
-  # 连接超时
-  ConnectTimeout: 5000
-  # 响应超时
-  ReadTimeout: 5000
-hystrix:
-  shareSecurityContext: true
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            # 熔断器超时时间，默认：1000/毫秒
-            timeoutInMilliseconds: 5000
