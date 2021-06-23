@@ -25,6 +25,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:20000/eureka
+    fetch-registry: true
   instance:
     prefer-ip-address: true #显示 ip
 file:
@@ -36,6 +37,19 @@ file:
     bucket-name: bucket-name
 pulsar:
   service-url: pulsar://192.168.1.228:6650
+feign:
+  hystrix:
+    enabled: true #开启 服务熔断
+  client:
+    config:
+      default:
+        retryer: feign.Retryer.Default #设置超时重试策略,防止首次启动超时
+##### Ribbon 配置
+ribbon:
+  # 连接超时
+  ConnectTimeout: 5000
+  # 响应超时
+  ReadTimeout: 5000
 ignored:
   # 限流及黑名单不拦截的路径
   limitUrls:

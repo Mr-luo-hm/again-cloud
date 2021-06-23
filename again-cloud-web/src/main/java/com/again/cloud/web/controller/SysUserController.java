@@ -70,7 +70,8 @@ public class SysUserController {
 	@GetMapping("/testRouteing")
 	public String testRouteing() {
 		System.out.println("aaaaaaaaaaaaaaaaaaaa");
-		return "success";
+		String aaa = cacheService.getFromRedis("aaa");
+		return aaa;
 	}
 
 }
