@@ -67,4 +67,10 @@ public class SysUserController {
 		return list;
 	}
 
+	@GetMapping("/testRouteing")
+	public String testRouteing() {
+		System.out.println("aaaaaaaaaaaaaaaaaaaa");
+		return "success";
+	}
+
 }

@@ -1,3 +1,8 @@
+spring:
+  application:
+    name: again-web
+  profiles:
+    active: dev
 server:
   port: 20003
 again:
@@ -8,46 +13,14 @@ again:
       worker_group_thread_count: 12
       max_payload_size: 65536
       bind_port: 20004
-  starter:
-    kafka:
-      bootstrapServers: scrm-bus-kafka:9092,scrm-bus-kafka:9093,scrm-bus-kafka:9094
-      groupId: default_consumer_group
-      keyDeserializerClassName: org.apache.kafka.common.serialization.StringDeserializer
-      valueSerializerClassName: org.apache.kafka.common.serialization.StringSerializer
-    # IP限流
-  iplimit:
-    # 开启
-    enable: true
-    # 每1秒内（单位毫秒）
-    timeout: 1000
-    # 每个ip限制20个请求（单位个）
-    limit: 20
-  # 全局限流
-  ratelimit:
-    # 开启
-    enable: true
-    # 每1秒内（单位毫秒）
-    timeout: 1000
-    # 总限制200个请求（单位个）
-    limit: 200
-  # IP限流
-spring:
-  datasource:
-    password: root
-    username: root
-    url: jdbc:mysql://192.168.1.123:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
-  application:
-    name: again-web
-  rabbitmq:
-    host: 192.168.1.123
-    port: 5672
-    username: guest
-    password: guest
-  redis:
-    host: 192.168.1.4
-    # 数据库索引 默认0
-    database: 5
-    port: 6369
+  iplimit: # IP限流
+    enable: true  # 开启
+    timeout: 1000  # 每1秒内（单位毫秒）
+    limit: 20 # 每个ip限制20个请求（单位个）
+  ratelimit: # 全局限流
+    enable: true  # 开启
+    timeout: 1000 # 每1秒内（单位毫秒）
+    limit: 200 # 总限制200个请求（单位个）
 eureka:
   client:
     service-url:
@@ -63,3 +36,10 @@ file:
     bucket-name: bucket-name
 pulsar:
   service-url: pulsar://192.168.1.228:6650
+ignored:
+  # 限流及黑名单不拦截的路径
+  limitUrls:
+    - /**/*.js
+    - /**/*.css
+    - /**/*.png
+    - /**/*.ico

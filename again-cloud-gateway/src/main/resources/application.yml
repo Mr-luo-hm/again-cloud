@@ -1,0 +1,47 @@
+server:
+  port: 20006
+spring:
+  application:
+    name: again-gateway
+  rabbitmq:
+    host: 192.168.1.123
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  instance:
+    prefer-ip-address: true #当我们在eureka中点击服务的地址的时候打开的是以ip开头的
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+zuul:
+  ignored-services: '*'
+  routes:
+    again-cache: /**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  #  hystrix:
+  #    enabled: true
+  client:
+    config:
+      default:
+        retryer: feign.Retryer.Default #设置超时重试策略,防止首次启动超时
+##### Ribbon 配置
+ribbon:
+  # 连接超时
+  ConnectTimeout: 5000
+  # 响应超时
+  ReadTimeout: 5000
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # 熔断器超时时间，默认：1000/毫秒
+            timeoutInMilliseconds: 5000

@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    password: root
+    username: root
+    url: jdbc:mysql://192.168.1.123:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+  rabbitmq:
+    host: 192.168.1.123
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    host: 192.168.1.4
+    # 数据库索引 默认0
+    database: 5
+    port: 6369
+again:
+  starter:
+    kafka:
+      bootstrapServers: scrm-bus-kafka:9092,scrm-bus-kafka:9093,scrm-bus-kafka:9094
+      groupId: default_consumer_group
+      keyDeserializerClassName: org.apache.kafka.common.serialization.StringDeserializer
+      valueSerializerClassName: org.apache.kafka.common.serialization.StringSerializer
