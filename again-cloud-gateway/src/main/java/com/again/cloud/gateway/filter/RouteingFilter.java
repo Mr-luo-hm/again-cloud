@@ -35,11 +35,13 @@ public class RouteingFilter extends ZuulFilter {
 	public Object run() throws ZuulException {
 		RequestContext context = RequestContext.getCurrentContext();
 		HttpServletRequest request = context.getRequest();
-		context.put(FilterConstants.SERVICE_ID_KEY, "again-web"); // 找寻服务appname 为
-																	// again-web得服务
-		context.put(FilterConstants.REQUEST_URI_KEY, "/testRouteing"); // 找寻 testRouteing
-																		// 得接口
+		// 找寻服务appname 为again-web得服务
+		context.put(FilterConstants.SERVICE_ID_KEY, "again-web");
+		// 找寻 testRouteing得接口
+		context.put(FilterConstants.REQUEST_URI_KEY, "/testRouteing");
+
 		return null;
 	}
+
 
 }
