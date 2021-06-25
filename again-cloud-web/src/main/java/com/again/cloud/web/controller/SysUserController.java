@@ -2,6 +2,7 @@ package com.again.cloud.web.controller;
 
 import com.again.cloud.biz.entity.SysUser;
 import com.again.cloud.biz.result.Result;
+import com.again.cloud.web.annotation.Idempotent;
 import com.again.cloud.web.service.SysUserService;
 import com.again.cloud.web.service.api.CacheService;
 import com.again.cloud.web.utils.JacksonUtils;
@@ -55,6 +56,7 @@ public class SysUserController {
 	}
 
 	@GetMapping("/username")
+	@Idempotent
 	public List<SysUser> getUsername(String type) {
 		System.out.println(type);
 		ArrayList<SysUser> list = new ArrayList<>();
@@ -72,6 +74,12 @@ public class SysUserController {
 		System.out.println("aaaaaaaaaaaaaaaaaaaa");
 		String aaa = cacheService.getFromRedis("aaa");
 		return aaa;
+	}
+
+	@PostMapping("/sysUser")
+	// @Idempotent(body = true,expiredTime = 500)
+	public void test(@RequestBody SysUser sysUser) {
+		System.out.println(sysUser);
 	}
 
 }

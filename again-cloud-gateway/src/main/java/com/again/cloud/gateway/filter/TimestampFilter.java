@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 /**
  * 时间戳过滤器 判断是否在系统允许得范围内
  */
-@Component
+// @Component
 public class TimestampFilter extends ZuulFilter {
 
 	@Override

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+// @Component
 public class RouteingFilter extends ZuulFilter {
 
 	/**
@@ -34,14 +34,13 @@ public class RouteingFilter extends ZuulFilter {
 	@Override
 	public Object run() throws ZuulException {
 		RequestContext context = RequestContext.getCurrentContext();
-		HttpServletRequest request = context.getRequest();
-		// 找寻服务appname 为again-web得服务
-		context.put(FilterConstants.SERVICE_ID_KEY, "again-web");
+		// HttpServletRequest request = context.getRequest();
+		// 找寻服务appname 为again-web得服务//
+		context.put(FilterConstants.SERVICE_ID_KEY, "againAuth");
 		// 找寻 testRouteing得接口
-		context.put(FilterConstants.REQUEST_URI_KEY, "/testRouteing");
+		// context.put(FilterConstants.REQUEST_URI_KEY, "/testRouteing");
 
 		return null;
 	}
-
 
 }

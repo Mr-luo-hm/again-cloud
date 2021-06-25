@@ -7,11 +7,15 @@ spring:
     url: jdbc:mysql://192.168.1.242:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
   application:
     name: again-auth
+  cloud:
+    client:
+      ipAddress: 127.0.0.1
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:20000/eureka
   instance:
     prefer-ip-address: true #显示 ip
-security:
-  secret-key: suibianxiede
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+

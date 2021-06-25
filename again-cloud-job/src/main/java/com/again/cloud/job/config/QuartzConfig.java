@@ -22,9 +22,10 @@ public class QuartzConfig {
 	 */
 	@Bean(initMethod = "init")
 	public ZookeeperRegistryCenter zookeeperRegistryCenter(@Value(("${job.zookeeper.serverList}")) String serverList,
-			@Value(("${job.zookeeper.namespace}")) String nameSpace,@Value("${job.zookeeper.connection-timeout-milliseconds}") final int connectionTimeoutMilliseconds) {
+			@Value(("${job.zookeeper.namespace}")) String nameSpace,
+			@Value("${job.zookeeper.connection-timeout-milliseconds}") final int connectionTimeoutMilliseconds) {
 		ZookeeperConfiguration configuration = new ZookeeperConfiguration(serverList, nameSpace);
-		//连接超时时间
+		// 连接超时时间
 		configuration.setConnectionTimeoutMilliseconds(connectionTimeoutMilliseconds);
 		return new ZookeeperRegistryCenter(configuration);
 	}

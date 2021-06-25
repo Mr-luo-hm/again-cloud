@@ -18,10 +18,12 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 
 	private final IgnoredUrlsProperties ignoredUrlsProperties;
 
+	private final IdempotentFilter idempotentFilter;
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-
 		// 注册拦截器
+		registry.addInterceptor(idempotentFilter);
 		InterceptorRegistration ir = registry.addInterceptor(limitRaterInterceptor);
 		// 配置拦截的路径
 		ir.addPathPatterns("/**");

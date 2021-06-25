@@ -1,11 +1,16 @@
 server:
   port: 20000
-Spring:
+spring:
   application:
     name: again-eureka
+  cloud:
+    client:
+      ipAddress: 127.0.0.1
 eureka:
   instance:
     prefer-ip-address: true #当我们在eureka中点击服务的地址的时候打开的是以ip开头的
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
   client:
     register-with-eureka: false
     fetch-registry: false
