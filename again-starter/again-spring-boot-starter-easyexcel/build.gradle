@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+}
+
+group 'com.again'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'com.alibaba', name: 'easyexcel', version: '2.2.10'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.5.2'
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.8'
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.8'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.5.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.5.2'
+
+    implementation 'junit:junit:4.12'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public"
+    }
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+    }
+}
+
+/*uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://101.132.172.230:8081/repository/maven-releases/") {
+                authentication(userName: "admin", password: "Moppo!@#123")
+            }
+        }
+    }
+}*/
+
+artifacts {
+    archives jar
+}
