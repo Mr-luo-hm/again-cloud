@@ -31,7 +31,7 @@ public class WebStartApplication {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
 		registration.setFilter(new HttpServletRequestReplacedFilter());
 		registration.addUrlPatterns("/*");
-		// registration.addInitParameter("paramName", "paramValue");
+		registration.addInitParameter("paramName", "paramValue");
 		registration.setName("httpServletRequestReplacedFilter");
 		registration.setOrder(1);
 		return registration;

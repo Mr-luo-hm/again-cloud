@@ -5,13 +5,10 @@ import com.again.cloud.biz.result.Result;
 import com.again.cloud.web.annotation.Idempotent;
 import com.again.cloud.web.service.SysUserService;
 import com.again.cloud.web.service.api.CacheService;
-import com.again.cloud.web.utils.JacksonUtils;
 import com.again.cloud.web.utils.UploadUtils;
 import com.again.start.storage.FileStorageClient;
-import com.baomidou.mybatisplus.extension.api.R;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -56,7 +53,6 @@ public class SysUserController {
 	}
 
 	@GetMapping("/username")
-	@Idempotent
 	public List<SysUser> getUsername(String type) {
 		System.out.println(type);
 		ArrayList<SysUser> list = new ArrayList<>();
@@ -70,6 +66,7 @@ public class SysUserController {
 	}
 
 	@GetMapping("/testRouteing")
+	@Idempotent(expiredTime = 500)
 	public String testRouteing() {
 		System.out.println("aaaaaaaaaaaaaaaaaaaa");
 		String aaa = cacheService.getFromRedis("aaa");
@@ -77,7 +74,7 @@ public class SysUserController {
 	}
 
 	@PostMapping("/sysUser")
-	// @Idempotent(body = true,expiredTime = 500)
+	@Idempotent(body = true,expiredTime = 500)
 	public void test(@RequestBody SysUser sysUser) {
 		System.out.println(sysUser);
 	}
