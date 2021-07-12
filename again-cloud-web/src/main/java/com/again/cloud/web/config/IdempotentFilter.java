@@ -16,6 +16,9 @@ import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author lyj
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -25,7 +28,7 @@ public class IdempotentFilter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        if (request.getMethod().equals("POST")) {
+        if ("POST".equals(request.getMethod())) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             Method method = handlerMethod.getMethod();
             Idempotent ra = method.getAnnotation(Idempotent.class);
@@ -46,11 +49,15 @@ public class IdempotentFilter extends HandlerInterceptorAdapter {
     }
 
     public static String EncoderByMd5(String str) throws Exception {
-        MessageDigest md5 = MessageDigest.getInstance("md5");// 返回实现指定摘要算法的 MessageDigest
+        // 返回实现指定摘要算法的 MessageDigest
+        MessageDigest md5 = MessageDigest.getInstance("md5");
         // 对象。
-        md5.update(str.getBytes());// 先将字符串转换成byte数组，再用byte 数组更新摘要
-        byte[] nStr = md5.digest();// 哈希计算，即加密
-        return bytes2Hex(nStr);// 加密的结果是byte数组，将byte数组转换成字符串
+        // 先将字符串转换成byte数组，再用byte 数组更新摘要
+        md5.update(str.getBytes());
+        // 哈希计算，即加密
+        byte[] nStr = md5.digest();
+        // 加密的结果是byte数组，将byte数组转换成字符串
+        return bytes2Hex(nStr);
     }
 
     private static String bytes2Hex(byte[] bts) {

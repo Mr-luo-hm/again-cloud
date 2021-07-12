@@ -14,8 +14,14 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import java.util.HashMap;
 import java.util.Map;
 
-@Aspect // 声明此类是一个切面类：会包含切入点(pointcut)和通知(advice)
-@Component //声明组件，进入工厂
+/**
+ *
+ * @author lyj
+ * 声明组件，进入工厂
+ * 声明此类是一个切面类：会包含切入点(pointcut)和通知(advice)
+ */
+@Aspect
+@Component
 @Slf4j
 public class LoginAspect {
     @Pointcut("execution(* com.again.cloud.web.controller.SysUserController.getUsername(..))")
