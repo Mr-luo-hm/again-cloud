@@ -19,6 +19,10 @@ spring:
     password: root
     username: root
     url: jdbc:mysql://192.168.1.153:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+  redis:
+    host: 192.168.1.153
+    password: ''
+    port: 6389
   application:
     name: again-web
   rabbitmq:
