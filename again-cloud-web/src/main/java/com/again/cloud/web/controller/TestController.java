@@ -1,5 +1,7 @@
 package com.again.cloud.web.controller;
 
+import com.again.cloud.common.Context;
+import com.again.cloud.common.WxPay;
 import com.again.cloud.model.dto.MessageDTO;
 import com.again.cloud.web.producer.OutStream;
 import com.again.cloud.web.producer.PulsarProducer;
@@ -50,6 +52,14 @@ public class TestController {
 		String json = JacksonUtils.toJson(dto);
 		GenericMessage<String> message = new GenericMessage<>(json);
 		channel.send(message);
+		return "success";
+	}
+
+	@GetMapping("/getPay")
+	public String getPay() {
+		Context<Object> context = new Context<>(new WxPay());
+		Object strategy = context.executeStrategy(new WxPay());
+		System.out.println(strategy);
 		return "success";
 	}
 
