@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "com.again.cloud";
+option java_outer_classname = "GrpcService";
+option java_multiple_files = true;
+
+// 定义通用的 Grpc 服务
+service CommonService {
+  // 处理请求
+  rpc method (Request) returns (Response) {}
+  // 单向流
+  rpc ListFeatures(Request) returns (stream Response) {}
+  // 单向流
+  rpc RecordRoute(stream Request) returns (Response) {}
+  // 双向流
+  rpc RouteChat(stream Request) returns (stream Response) {}
+
+}
+
+// 定义通用的 Grpc 请求体
+message Request {
+  string request = 1;
+}
+
+// 定义通用的 Grpc 响应体
+message Response {
+  string response = 1;
+}

@@ -46,5 +46,13 @@
         <groupId>com.again</groupId>
         <artifactId>again-common-modules</artifactId>
     </dependency>
+    <dependency>
+        <groupId>com.again</groupId>
+        <artifactId>cloud-grpc-lib</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>net.devh</groupId>
+        <artifactId>grpc-server-spring-boot-starter</artifactId>
+    </dependency>
 </dependencies>
 </project>

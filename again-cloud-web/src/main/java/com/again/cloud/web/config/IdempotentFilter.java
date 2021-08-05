@@ -38,11 +38,14 @@ public class IdempotentFilter extends HandlerInterceptorAdapter {
 	}
 
 	public static String EncoderByMd5(String str) throws Exception {
-		MessageDigest md5 = MessageDigest.getInstance("md5");// 返回实现指定摘要算法的 MessageDigest
-																// 对象。
-		md5.update(str.getBytes());// 先将字符串转换成byte数组，再用byte 数组更新摘要
-		byte[] nStr = md5.digest();// 哈希计算，即加密
-		return bytes2Hex(nStr);// 加密的结果是byte数组，将byte数组转换成字符串
+		// 返回实现指定摘要算法的 MessageDigest对象。
+		MessageDigest md5 = MessageDigest.getInstance("md5");
+		// 先将字符串转换成byte数组，再用byte 数组更新摘要
+		md5.update(str.getBytes());
+		// 哈希计算，即加密
+		byte[] nStr = md5.digest();
+		// 加密的结果是byte数组，将byte数组转换成字符串
+		return bytes2Hex(nStr);
 	}
 
 	private static String bytes2Hex(byte[] bts) {

@@ -21,6 +21,7 @@
         <module>auth-center</module>
         <module>again-cloud-gateway</module>
         <module>again-cloud-job</module>
+        <module>again-cloud-common</module>
     </modules>
 
     <packaging>pom</packaging>

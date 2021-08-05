@@ -1,3 +1,10 @@
+grpc:
+  client:
+    local-grpc-server:
+      address: 'static://127.0.0.1:30001'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
 spring:
   application:
     name: again-web

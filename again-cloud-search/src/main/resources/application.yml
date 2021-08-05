@@ -1,3 +1,6 @@
+grpc:
+  server:
+    port: 30001
 server:
   port: 30000
 spring:
