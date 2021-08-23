@@ -2,9 +2,9 @@ spring:
   datasource:
     password: root
     username: root
-    url: jdbc:mysql://192.168.1.123:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://192.168.1.167:3307/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
   rabbitmq:
-    host: 192.168.1.123
+    host: 192.168.1.167
     port: 5672
     username: guest
     password: guest

@@ -22,6 +22,7 @@
         <module>again-cloud-gateway</module>
         <module>again-cloud-job</module>
         <module>again-cloud-common</module>
+        <module>again-oauth</module>
     </modules>
 
     <packaging>pom</packaging>

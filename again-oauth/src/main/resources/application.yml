@@ -1,0 +1,7 @@
+server:
+  port: 30008
+spring:
+  application:
+    name: @artifactId@
+  profiles:
+    active: @profiles.active@  # 当前激活配置，默认dev
