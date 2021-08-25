@@ -5,4 +5,5 @@ package com.again.oauth.entity;
  * @description:
  */
 public class SysUser {
+
 }

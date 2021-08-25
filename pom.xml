@@ -23,6 +23,7 @@
         <module>again-cloud-job</module>
         <module>again-cloud-common</module>
         <module>again-oauth</module>
+        <module>again-boot</module>
     </modules>
 
     <packaging>pom</packaging>

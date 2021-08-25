@@ -28,55 +28,55 @@ import java.util.ArrayList;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ResourcesServerConfig extends ResourceServerConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Autowired
+	private DataSource dataSource;
 
-    @Autowired
-    private LogoutSuccessHandler logoutSuccessHandler;
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-    @Bean
-    public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
+	@Autowired
+	private LogoutSuccessHandler logoutSuccessHandler;
 
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId("project_api").stateless(false);
-        resources.tokenStore(tokenStore());
-    }
+	@Bean
+	public TokenStore tokenStore() {
+		return new JdbcTokenStore(dataSource);
+	}
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http
-                .logout()
-                .logoutUrl("/logout")//虚拟的登出地址
-                .logoutSuccessHandler(logoutSuccessHandler)//登出做的操作
-                .and()
-                .authorizeRequests()
-                .antMatchers("/test/hello").permitAll()
-                .antMatchers("/test/**").authenticated();
-    }
+	@Override
+	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+		resources.resourceId("project_api").stateless(false);
+		resources.tokenStore(tokenStore());
+	}
 
-    public static void main(String[] args) {
-        ArrayList<String> arrayList = new ArrayList<>();
-        try {
-            File file = new File("C:\\Users\\86172\\Documents\\WeChat Files\\wxid_03rwkgity6qt22\\FileStorage\\File\\2021-08\\bahasa_qc_20210818\\bahasa_qc_20210818_s0b_lt.txt");
-            InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
-            BufferedReader bf = new BufferedReader(inputReader);
-            // 按行读取字符串
-            String str;
-            while ((str = bf.readLine()) != null) {
-                System.out.println(str);
-            }
-            bf.close();
-            inputReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	@Override
+	public void configure(HttpSecurity http) throws Exception {
+		http.logout().logoutUrl("/logout")// 虚拟的登出地址
+				.logoutSuccessHandler(logoutSuccessHandler)// 登出做的操作
+				.and().authorizeRequests().antMatchers("/test/hello").permitAll().antMatchers("/test/**")
+				.authenticated();
+	}
+
+	public static void main(String[] args) {
+		ArrayList<String> arrayList = new ArrayList<>();
+		try {
+			File file = new File(
+					"C:\\Users\\86172\\Documents\\WeChat Files\\wxid_03rwkgity6qt22\\FileStorage\\File\\2021-08\\bahasa_qc_20210818\\bahasa_qc_20210818_s0b_lt.txt");
+			InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
+			BufferedReader bf = new BufferedReader(inputReader);
+			// 按行读取字符串
+			String str;
+			while ((str = bf.readLine()) != null) {
+				System.out.println(str);
+			}
+			bf.close();
+			inputReader.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

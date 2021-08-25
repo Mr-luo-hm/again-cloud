@@ -5,11 +5,13 @@ import java.util.Arrays;
  * @description:
  */
 public class Algorithm {
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] nums={3,6,8};
-        System.out.println(solution.minMoves2(nums));
-    }
+
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+		int[] nums = { 3, 6, 8 };
+		System.out.println(solution.minMoves2(nums));
+	}
+
 }
 
 /**
@@ -17,12 +19,14 @@ public class Algorithm {
  *
  */
 class Solution {
-    public int minMoves2(int[] nums) {
-        Arrays.sort(nums);
-        int i = 0,j = nums.length - 1, res = 0;
-        while (i < j) {
-            res += nums[j--] - nums[i++];
-        }
-        return res;
-    }
+
+	public int minMoves2(int[] nums) {
+		Arrays.sort(nums);
+		int i = 0, j = nums.length - 1, res = 0;
+		while (i < j) {
+			res += nums[j--] - nums[i++];
+		}
+		return res;
+	}
+
 }

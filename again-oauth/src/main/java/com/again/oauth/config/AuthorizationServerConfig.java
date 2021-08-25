@@ -22,57 +22,59 @@ import javax.sql.DataSource;
  * @description:
  */
 @Configuration
-@EnableAuthorizationServer   //注解开启了验证服务器
+@EnableAuthorizationServer // 注解开启了验证服务器
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+	@Autowired
+	private DataSource dataSource;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
-    @Bean
-    public JdbcClientDetailsService jdbcClientDetailsService() {
-        return new JdbcClientDetailsService(dataSource);
-    }
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @Bean
-    public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
+	@Bean
+	public JdbcClientDetailsService jdbcClientDetailsService() {
+		return new JdbcClientDetailsService(dataSource);
+	}
 
-    @Autowired
-    public UserDetailsService userDetailsService;
+	@Bean
+	public TokenStore tokenStore() {
+		return new JdbcTokenStore(dataSource);
+	}
 
-    /**
-     * 配置 token 节点的安全策略
-     * @param security
-     * @throws Exception
-     */
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.tokenKeyAccess("permitAll()");  // 获取 token 的策略
-        security.checkTokenAccess("isAuthenticated()");
-    }
+	@Autowired
+	public UserDetailsService userDetailsService;
 
-    /**
-     * 配置客户端信息
-     *
-     * @param clients
-     * @throws Exception
-     */
-    @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(jdbcClientDetailsService());  //设置客户端的配置从数据库中读取，存储在oauth_client_details表
-    }
+	/**
+	 * 配置 token 节点的安全策略
+	 * @param security
+	 * @throws Exception
+	 */
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		security.tokenKeyAccess("permitAll()"); // 获取 token 的策略
+		security.checkTokenAccess("isAuthenticated()");
+	}
 
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager) // 开启密码验证，来源于 WebSecurityConfigurerAdapter
-                .userDetailsService(userDetailsService) // 读取验证用户的信息
-                .tokenStore(tokenStore());
+	/**
+	 * 配置客户端信息
+	 * @param clients
+	 * @throws Exception
+	 */
+	@Override
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		clients.withClientDetails(jdbcClientDetailsService()); // 设置客户端的配置从数据库中读取，存储在oauth_client_details表
+	}
 
-    }
+	@Override
+	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		endpoints.authenticationManager(authenticationManager) // 开启密码验证，来源于
+																// WebSecurityConfigurerAdapter
+				.userDetailsService(userDetailsService) // 读取验证用户的信息
+				.tokenStore(tokenStore());
+
+	}
+
 }

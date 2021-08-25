@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/init")
 public class TestController {
-    @RequestMapping(value = "actionInfo", method = RequestMethod.GET)
-    @ResponseBody
-    public String test(){
-        return "ok";
-    }
+
+	@RequestMapping(value = "actionInfo", method = RequestMethod.GET)
+	@ResponseBody
+	public String test() {
+		return "ok";
+	}
+
 }
